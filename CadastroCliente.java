@@ -1,25 +1,29 @@
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Locale;
 
 public class CadastroCliente {
-    private String nome_tutor;
+    private String nome_cliente;
     private String cpf;
-    private List<Animal> animais;
+    private ArrayList<Animal> animais;
 
 
-    public CadastroCliente(String nome_tutor, String cpf) {
-        this.nome_tutor = nome_tutor;
+    public CadastroCliente(String nome_cliente, String cpf) {
+        this.nome_cliente = nome_cliente;
         this.cpf = cpf;
         this.animais = new ArrayList<>();
     }
 
     public void adicionarAnimal(Animal animal) {
-        if (animal != null) {
-            animais.add(animal);
-        }
+        animais.add(animal);
     }
 
-    public List<Animal> getAnimais() {
+    public String getNome() {
+        return nome_cliente;
+    }
+
+
+    public ArrayList<Animal> getAnimal() {
         return animais;
 
     }
@@ -29,6 +33,6 @@ public class CadastroCliente {
     }
 
     public String toString() {
-        return "Cliente" + nome_tutor + ", CPF" + cpf + ", Quantidade de Animais: " + animais.size();
+        return "Cliente" + nome_cliente + ", CPF" + cpf + ", Quantidade de Animais: " + animais.size();
     }
 }
