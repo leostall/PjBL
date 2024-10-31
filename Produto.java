@@ -42,5 +42,26 @@
         }
 
     }
+    public class ProdutoConcreto extends Produto {
+        public ProdutoConcreto(int codigo, String nome, double preco_custo, double preco_venda, int estoque, String descricao) {
+            super(codigo, nome, preco_custo, preco_venda, estoque, descricao);
+        }
+    }
 
+    
+public class Produto {
+    public static void main(String[] args) {
+        // Cria um objeto do tipo ProdutoConcreto
+        Produto produto = new ProdutoConcreto(1, "Notebook", 1000.0, 1200.0, 10, "Notebook Dell");
+        
+        produto.setEntradaEstoque(5);          // Aumenta o estoque em 5
+        produto.setSaidaEstoque(2);            // Diminui o estoque em 2
+        produto.atualizarValor(1150.0);        // Atualiza o preço de venda para 1150.0
+        
+        System.out.println(produto.exibirInformacoes());
+        System.out.println("Lucro: " + produto.calcularLucro());
+        System.out.println("Estoque baixo? " + produto.verificarEstoqueBaixo(5));  // Verifica se o estoque é menor que 5
+    }
+}
+    
 
