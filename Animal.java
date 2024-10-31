@@ -38,7 +38,7 @@ public abstract class Animal {
     public void setCastrado(boolean castrado) {this.castrado = castrado;}
     public void setPeso(double peso) {this.peso = peso;}
 
-    
+
     public void exibirDados() {
         System.out.println("Nome do Animal: " + nome_animal);
         System.out.println("Nome do Tutor: " + nome_tutor);
