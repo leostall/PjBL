@@ -35,4 +35,13 @@ public class CadastroCliente {
     public String toString() {
         return "Cliente" + nome_cliente + ", CPF" + cpf + ", Quantidade de Animais: " + animais.size();
     }
+
+    public Animal buscarAnimalPorNome(String nome) throws AnimalNaoEncontradoException {
+        for (Animal animal : animais) {
+            if (animal.getNome().equalsIgnoreCase(nome)) {
+                return animal;
+            }
+        }
+        throw new AnimalNaoEncontradoException("Animal com o nome " + nome + " não foi encontrado.");
+    }
 }
