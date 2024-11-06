@@ -1,4 +1,3 @@
-// Classe abstrata Produto
 public abstract class Produto {
     private int codigo;
     private String nome;
@@ -7,7 +6,6 @@ public abstract class Produto {
     private int estoque;
     private String descricao;
 
-    // Construtor da classe Produto
     public Produto(int codigo, String nome, double precoCusto, double precoVenda, int estoque, String descricao) {
         this.codigo = codigo;
         this.nome = nome;
@@ -16,11 +14,20 @@ public abstract class Produto {
         this.estoque = estoque;
         this.descricao = descricao;
     }
+    // MÉTODOS GET ----------------------------------------------------------
+    
+    public double getLucro() {return this.precoVenda - this.precoCusto;}
+    public boolean getEstoque(int limite) {return this.estoque < limite;}
 
-    // Métodos de manipulação de estoque
-    public int setEntradaEstoque(int quantidade) {
-        this.estoque += quantidade;
-        return this.estoque;
+    // MÉTODOS SET ----------------------------------------------------------
+
+    public double setValor(double preco_venda){
+        if(preco_venda >= 0){ // Vrifica se o valor é maior ou igual a 0, pois não pdoemos ter um preoduto com valor negativo
+            this.preco_venda = preco_venda;
+            return this.preco_venda;
+        } else{
+            return -1;
+        }
     }
 
     public int setSaidaEstoque(int quantidade) {
@@ -32,34 +39,34 @@ public abstract class Produto {
         return this.estoque;
     }
 
-    // Atualiza o valor de venda
-    public double atualizarValor(double precoVenda) {
-        this.precoVenda = precoVenda;
-        return this.precoVenda;
+    public int setEntradaEstoque(int quantidade) {
+        this.estoque += quantidade;
+        return this.estoque;
     }
 
-    // Calcula o lucro
-    public double calcularLucro() {
-        return this.precoVenda - this.precoCusto;
-    }
-
-    // Verifica se o estoque está abaixo do limite
-    public boolean verificarEstoqueBaixo(int limite) {
-        return this.estoque < limite;
-    }
-
-    // Exibe as informações do produto
-    public String exibirInformacoes() {
-        return "Código: " + codigo + "\nNome: " + nome + "\nPreço de Custo: " + precoCusto +
-                "\nPreço de Venda: " + precoVenda + "\nEstoque: " + estoque +
-                "\nDescrição: " + descricao;
+    public void exibirInformacoes() {
+        System.out.println("Código: " + this.codigo);
+        System.out.println("Nome: " + this.nome);
+        System.out.println("Preço de Custo: " + this.preco_custo);
+        System.out.println("Preço de Venda: " + this.preco_venda);
+        System.out.println("Estoque: " + this.estoque);
+        System.out.println("Descrição: " + this.descricao);
     }
 }
 
-// Classe concreta ProdutoConcreto que herda de Produto
- class ProdutoConcreto extends Produto {
-    public ProdutoConcreto(int codigo, String nome, double precoCusto, double precoVenda, int estoque, String descricao) {
-        super(codigo, nome, precoCusto, precoVenda, estoque, descricao);
+class ProdutoInterno extends Produto {
+    public ProdutoInterno(int codigo, String nome, double preco_custo, int estoque, String descricao) {
+        super(codigo, nome, preco_custo, -1, estoque, descricao);
+    }
+}
+
+class ProdutoVenda extends Produto {
+    public ProdutoVenda(int codigo, String nome, double preco_custo, double preco_venda, int estoque, String descricao) {
+        super(codigo, nome, preco_custo, preco_venda, estoque, descricao);
+    }
+
+    public double calcularLucro() {
+        return getPrecoVenda() - getPrecoCusto();
     }
 }
 
