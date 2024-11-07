@@ -17,14 +17,18 @@ public abstract class Produto {
     // MÉTODOS GET ----------------------------------------------------------
     
     public double getLucro() {return this.precoVenda - this.precoCusto;}
-    public boolean getEstoque(int limite) {return this.estoque < limite;}
+    public int getEstoque() {return this.estoque;}
+    public double getPrecoVenda() {return this.precoVenda;}
+    public double getPrecoCusto() {return this.precoCusto;}
+    public int getCodigo() {return this.codigo;}
+
 
     // MÉTODOS SET ----------------------------------------------------------
 
     public double setValor(double preco_venda){
         if(preco_venda >= 0){ // Vrifica se o valor é maior ou igual a 0, pois não pdoemos ter um preoduto com valor negativo
-            this.preco_venda = preco_venda;
-            return this.preco_venda;
+            this.precoVenda = preco_venda;
+            return this.precoVenda;
         } else{
             return -1;
         }
@@ -47,8 +51,8 @@ public abstract class Produto {
     public void exibirInformacoes() {
         System.out.println("Código: " + this.codigo);
         System.out.println("Nome: " + this.nome);
-        System.out.println("Preço de Custo: " + this.preco_custo);
-        System.out.println("Preço de Venda: " + this.preco_venda);
+        System.out.println("Preço de Custo: " + this.precoCusto);
+        System.out.println("Preço de Venda: " + this.precoVenda);
         System.out.println("Estoque: " + this.estoque);
         System.out.println("Descrição: " + this.descricao);
     }
